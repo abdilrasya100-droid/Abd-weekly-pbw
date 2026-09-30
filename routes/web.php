@@ -3,19 +3,34 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view('home', [
+        "title" => "Home",
+    ]);
+});
+
+Route::get('/profile', function () {
+    return view('profile',[
+        "title" => "Profile",
+        "name" => "Muhammad Fadhlan",
+        "nim" => "123456789",
+        "prodi" => "Teknologi Pertanian",
+        "gambar" => "picture.jpg",
+    ]);
 });
 
 
-Route::get('/1', function () {
-    return view('profile');
+Route::get('/news', function () {
+    return view('news', [
+        "title" => "News",
+    ]);
 });
 
-
-Route::get('/2', function () {
-    return view('news');
-});
-
-Route::get('/3', function () {
-    return view('kontak');
+Route::get('/kontak', function () {
+    return view('kontak', [
+        "title" => "Kontak",
+    ]);
 });
