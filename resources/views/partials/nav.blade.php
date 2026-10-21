@@ -10,7 +10,7 @@
           <a class="nav-link {{ ($title === 'Home') ? 'active' : '' }}" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($title === 'News') ? 'active' : '' }}" href="/news">News</a>
+          <a class="nav-link {{ ($title === 'berita') ? 'active' : '' }}" href="/berita">berita</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

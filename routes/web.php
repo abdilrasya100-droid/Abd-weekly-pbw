@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BeritaController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,7 +31,7 @@ Route::get('/kontak', function () {
     ]);
 });
 
- $data_news = [
+ $data_berita = [
     [
         "judul berita" => "Inovasi Teknologi Terbaru di Tahun 2023",
         "slug" => "inovasi-teknologi-terbaru-di-tahun-2023",
@@ -46,31 +48,7 @@ Route::get('/kontak', function () {
     ]
 ];
 
-Route::get('/news', function () {
-
-    return view('news', [
-        "title" => "News",
-        "beritas" => News::all(),
-    ]);
-});
-
+Route::get('/berita', [BeritaController::class, 'tampillberita']);
 ///routing untuk handling 1 berita
-Route::get('/news/{slug}', function($slug) use ($data_news) {
+Route::get('/berita/{slug}',[BeritaController::class, 'tampilberitatunggal']);
 
-
-
-$singlenews = [];
-
-foreach($data_news as $news) 
-    {
-        if($news["slug"] == $slug) 
-          {
-            $singlenews = $news;
-          }
-    }
-
-    return view('partials.newstunggal', [
-        "title" => "News Tunggal",
-        "berita" => $singlenews,
-    ]);
-});

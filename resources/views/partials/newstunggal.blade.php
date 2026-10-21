@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="text-center">
-    <h1>{{ $news["judul berita"] }}</h1>
-    <h5>{{ $news["Penulis"] }}</h5>
+    <h1>{{ $berita["judul berita"] }}</h1>
+    <h5>{{ $berita["Penulis"] }}</h5>
 </div>
 <div>
     <div class="text-justify">
-        <p>{{ $news["konten"] }}</p>
+        <p>{{ $berita["konten"] }}</p>
     </div>
 </div>
 @endsection
