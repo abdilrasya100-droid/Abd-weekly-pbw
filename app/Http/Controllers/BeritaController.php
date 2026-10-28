@@ -2,39 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Berita;
+use Illuminate\View\View;
 
 class BeritaController extends Controller
 {
-    public static function tampillberita()
+    public function tampillberita(): View
     {
-         return view('berita', [
-        "title" => "berita",
-        "beritas" => Berita::all(),
-    ]);
+        return view('berita', [
+            'title' => 'berita',
+            'beritas' => Berita::all(),
+        ]);
     }
 
-    public static function tampilberitatunggal($slug)
+    public function tampilberitatunggal(string $slug): View
     {
-        $berita = Berita::all();
+        $berita = Berita::where('slug', $slug)->firstOrFail();
 
-        $singlenews = [];
-
-        foreach ($berita as $berita) {
-            if ($berita['slug'] === $slug) {
-               $singlenews = $berita;
-                break;
-            }
-        }
-
-        if ($berita === null) {
-            abort(404);
-        }
-
-        return view('beritaStunggal', [
-            "title" => Berita::gedJudul($slug),
-            "singlenews" => $singlenews,
+        return view('partials.newstunggal', [
+            'title' => $berita->judul,
+            'berita' => $berita,
         ]);
     }
 }
